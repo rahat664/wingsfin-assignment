@@ -1,0 +1,7 @@
+backend/
+frontend/node_modules/
+frontend/dist/
+backend/node_modules/
+backend/dist/
+.idea/
+.tmp-playwright/
