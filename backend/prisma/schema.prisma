@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum InstrumentType {
+  INDEX
+  STOCK
+}
+
+model MarketTick {
+  id             String         @id @default(uuid())
+  symbol         String
+  instrumentType InstrumentType
+  eventTime      DateTime
+  value          Decimal        @db.Decimal(18, 4)
+  yesterdayClose Decimal        @db.Decimal(18, 4)
+  changePercent  Decimal?       @db.Decimal(10, 4)
+  rawPayload     Json?
+  createdAt      DateTime       @default(now())
+
+  @@index([symbol, instrumentType, eventTime])
+  @@index([eventTime])
+}
