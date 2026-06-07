@@ -73,6 +73,8 @@ If the frontend is pointed at a non-default backend URL, set:
 ## Environment Variables
 
 The market session is configurable through environment variables.
+Historical demo data is seeded only when the database is empty. Set `MARKET_SEED_RESET=true`
+if you intentionally want to wipe and regenerate the demo dataset.
 
 ### Backend
 
@@ -89,6 +91,8 @@ The market session is configurable through environment variables.
 | `STOCK_YESTERDAY_CLOSE` | Yesterday close for stock seed/simulator | `238.88` |
 | `MARKET_SIMULATOR_ENABLED` | Enables live tick simulation | `true` or `false` |
 | `SIMULATOR_MAX_INTERVAL_MS` | Upper bound for simulator delay | `3000` |
+| `MARKET_SEED_RESET` | Forces the seed script to clear and regenerate demo data | `true` or `false` |
+| `MARKET_SEED_KEY` | Optional deterministic seed key for demo data generation | `wingfin-market-seed-v1` |
 
 ### Frontend
 

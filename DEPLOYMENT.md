@@ -34,17 +34,20 @@ Set these in Railway for the backend service:
 - `INDEX_YESTERDAY_CLOSE` optional, default `5222.22`
 - `STOCK_YESTERDAY_CLOSE` optional, default `238.88`
 - `MARKET_SIMULATOR_ENABLED` optional, set `false` if you want to disable the live simulator
+- `MARKET_SEED_RESET` optional, set `true` only when you intentionally want to clear and regenerate demo data
+- `MARKET_SEED_KEY` optional, keep the default if you want deterministic demo data across environments
 
 ### Backend behavior
 
-The backend container runs Prisma migration and seed steps on startup through `backend/docker-entrypoint.sh`.
+The backend container runs Prisma migration on startup through `backend/docker-entrypoint.sh`.
+The seed step runs only when the `MarketTick` table is empty, which prevents Railway redeploys
+from wiping live data. Set `MARKET_SEED_RESET=true` if you need a clean demo reset.
 
 That is useful for the take-home/demo setup because:
 
 - migrations are applied automatically
 - sample market data is loaded automatically
-
-If you want production data persistence later, move seeding out of the startup path.
+- existing data is preserved across restarts and redeploys
 
 ## 3. Configure the frontend service
 
