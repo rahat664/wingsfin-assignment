@@ -35,6 +35,8 @@ The application is built as a full-stack system with:
 The fastest way to run the full stack locally is:
 
 ```bash
+cp .env.example .env
+# Set your own local POSTGRES_PASSWORD and keep DATABASE_URL in sync.
 docker compose up --build
 ```
 
@@ -103,7 +105,7 @@ if you intentionally want to wipe and regenerate the demo dataset.
 | `VITE_MARKET_OPEN_TIME` | Default market open time shown in the UI | `10:00` |
 | `VITE_MARKET_CLOSE_TIME` | Default market close time shown in the UI | `20:00` |
 
-See the root `.env` file for a working local example.
+Copy `.env.example` to a local `.env` file and configure your own credentials. `.env` is intentionally excluded from version control. Historical commits may still contain the previously tracked demo configuration; rotate any reused credentials.
 
 ## API
 
