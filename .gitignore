@@ -5,3 +5,8 @@ backend/dist/
 backend/.git.backup/
 .idea/
 .tmp-playwright/
+
+# Local runtime configuration
+.env
+.env.*
+!.env.example
